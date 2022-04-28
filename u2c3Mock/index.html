@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>U2C3 Mock</title>
+    <style>
+      #report{
+        display: flex;
+        width: 30%;
+        height: 250px;
+      }
+      #report>div{
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        margin-right: 3%;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <select id="month">
+        <option value="January">JANUARY</option>
+        <option value="February">FEB</option>
+        <option value="MARCH">MARCH</option>
+        <option value="APRIL">APRIL</option>
+        <option value="MAY">MAY</option>
+        <option value="JUNE">JUNE</option>
+        <option value="JULY">JULY</option>
+        <option value="AUGUST">AUGUST</option>
+        <option value="SEPETEMBER">SEPETEMBER</option>
+        <option value="OCTOBER">OCTOBER</option>
+        <option value="NOVEMBER">NOVEMBER</option>
+        <option value="DECEMBER">DECEMBER</option>
+      </select>
+
+      <input id="income" type="number" placeholder="Enter Income" />
+
+      <input id="expense" type="number" placeholder="Enter expense" />
+
+      <input type="submit" />
+    </form>
+
+    <div id="report">
+          <!-- Append your cards here -->
+    </div>
+  </body>
+</html>
+
+<script>
+  
+  document.querySelector("form").addEventListener("submit",myfunction)
+
+  function myfunction(){
+    event.preventDefault()
+
+    var month=document.querySelector("#month").value;
+    var income=document.querySelector("#income").value
+    var expense=document.querySelector("#expense").value;
+
+
+    var div1=document.createElement("div")
+  
+   var h1= document.createElement("h1")
+   h1.innerText=month
+
+    var p1 = document.createElement("p")
+    p1.innerText=income
+    var p2=document.createElement("p")
+    p2.innerText=expense
+
+
+    var h2 = document.createElement("h3")
+    if(expense>income){
+      h2.innerText="DEBT"
+    }
+    else if(income>expense){
+      h2.innerText="SAVE"
+    }else{
+      h2.innerText="BREAKEVEN"
+    }
+
+    var h3=document.createElement("Button")
+    h3.innerText="DELET"
+    h3.style.cursor="pointer";
+    h3.addEventListener("click",deletfun)
+    div1.append(h1,p1,p2,h2,h3)
+
+    document.querySelector("#report").append(div1)
+
+    function deletfun(){
+      event.preventDefault()
+     console.log(event.target.ParentNode.remove());
+
+    }
+
+  }
+  
+</script>
